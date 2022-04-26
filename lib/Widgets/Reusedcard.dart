@@ -4,8 +4,12 @@ class ReusedCard extends StatelessWidget {
   const ReusedCard({
     Key? key,
     required this.colour,
+    required this.cardchild,
   }) : super(key: key);
+
   final Color colour;
+  final Widget cardchild;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,6 +18,7 @@ class ReusedCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         color: colour,
       ),
+      child: cardchild,
     );
   }
 }
