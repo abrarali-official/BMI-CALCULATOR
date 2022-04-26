@@ -21,7 +21,7 @@ enum Gender {
 }
 
 class _InputPageState extends State<InputPage> {
-  
+  //  Gender selectedGender;
   Color maleCardColor = InActiveCardcolor;
   Color femaleCardColor = InActiveCardcolor;
   void updatecolor(Gender selectedGender) {
@@ -61,14 +61,18 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       setState(() {
                         updatecolor(Gender.male);
+                        // selectedGender = Gender.male;
                       });
                     },
                     child: ReusedCard(
-                      colour: maleCardColor,
+                      // colour: selectedGender == Gender.male
+                      // ? ActiveCardcolor
+                      // : InActiveCardcolor,
                       cardchild: card_data(
                         text: 'MALE',
                         icons: FontAwesomeIcons.mars,
                       ),
+                      colour: maleCardColor,
                     ),
                   ),
                 ),
@@ -77,12 +81,17 @@ class _InputPageState extends State<InputPage> {
                     onTap: () {
                       setState(() {
                         updatecolor(Gender.female);
+                        // selectedGender = Gender.female;
                       });
                     },
                     child: ReusedCard(
-                        colour: femaleCardColor,
-                        cardchild: card_data(
-                            text: 'FEMALE', icons: FontAwesomeIcons.venus)),
+                      // colour: selectedGender == Gender.female
+                      // ? ActiveCardcolor
+                      // : InActiveCardcolor,
+                      cardchild: card_data(
+                          text: 'FEMALE', icons: FontAwesomeIcons.venus),
+                      colour: femaleCardColor,
+                    ),
                   ),
                 ),
               ],
