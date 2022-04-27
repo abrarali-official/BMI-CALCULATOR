@@ -1,3 +1,4 @@
+import 'package:bmical/Data/constant.dart';
 import 'package:flutter/material.dart';
 
 class card_data extends StatelessWidget {
@@ -20,7 +21,7 @@ class card_data extends StatelessWidget {
       ),
       Text(
         text,
-        style: TextStyle(fontSize: 18, color: Color(0xff8d8e98)),
+        style: kLabelTextstyle,
       )
     ]);
   }
