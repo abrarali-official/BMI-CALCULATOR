@@ -21,7 +21,7 @@ enum Gender {
 }
 
 class _InputPageState extends State<InputPage> {
-  //  Gender selectedGender;
+  //  late Gender selectedGender;
   Color maleCardColor = InActiveCardcolor;
   Color femaleCardColor = InActiveCardcolor;
   void updatecolor(Gender selectedGender) {
@@ -57,41 +57,35 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusedCard(
+                    // colour: selectedGender == Gender.male
+                    // ? ActiveCardcolor
+                    // : InActiveCardcolor,
+                    cardchild: card_data(
+                      text: 'MALE',
+                      icons: FontAwesomeIcons.mars,
+                    ),
+                    colour: maleCardColor,
+                    onPress: () {
                       setState(() {
                         updatecolor(Gender.male);
-                        // selectedGender = Gender.male;
                       });
                     },
-                    child: ReusedCard(
-                      // colour: selectedGender == Gender.male
-                      // ? ActiveCardcolor
-                      // : InActiveCardcolor,
-                      cardchild: card_data(
-                        text: 'MALE',
-                        icons: FontAwesomeIcons.mars,
-                      ),
-                      colour: maleCardColor,
-                    ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusedCard(
+                    // colour: selectedGender == Gender.female
+                    // ? ActiveCardcolor
+                    // : InActiveCardcolor,
+                    cardchild: card_data(
+                        text: 'FEMALE', icons: FontAwesomeIcons.venus),
+                    colour: femaleCardColor,
+                    onPress: () {
                       setState(() {
                         updatecolor(Gender.female);
-                        // selectedGender = Gender.female;
                       });
                     },
-                    child: ReusedCard(
-                      // colour: selectedGender == Gender.female
-                      // ? ActiveCardcolor
-                      // : InActiveCardcolor,
-                      cardchild: card_data(
-                          text: 'FEMALE', icons: FontAwesomeIcons.venus),
-                      colour: femaleCardColor,
-                    ),
                   ),
                 ),
               ],
@@ -100,6 +94,7 @@ class _InputPageState extends State<InputPage> {
               child: ReusedCard(
                 colour: ActiveCardcolor,
                 cardchild: Container(),
+                onPress: () {},
               ),
             ),
             Expanded(
@@ -109,12 +104,14 @@ class _InputPageState extends State<InputPage> {
                   child: ReusedCard(
                     colour: ActiveCardcolor,
                     cardchild: Column(children: []),
+                    onPress: () {},
                   ),
                 ),
                 Expanded(
                   child: ReusedCard(
                     colour: ActiveCardcolor,
                     cardchild: Column(children: []),
+                    onPress: () {},
                   ),
                 ),
               ],
