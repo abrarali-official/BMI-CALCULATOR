@@ -1,3 +1,4 @@
+import 'package:bmical/Pages/result_page.dart';
 import 'package:flutter/material.dart';
 
 import 'Pages/input_page.dart';
@@ -7,7 +8,7 @@ void main() => runApp(const BMICalculator());
 class BMICalculator extends StatelessWidget {
   const BMICalculator({Key? key}) : super(key: key);
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
@@ -18,8 +19,11 @@ class BMICalculator extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xff0a0d22),
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white))),
       debugShowCheckedModeBanner: false,
-      home: InputPage(),
+      initialRoute: 'abrar',
+      routes: {
+        'abrar': (context) => InputPage(),
+        '/first': (context) => Result_page(),
+      },
     );
   }
 }
-

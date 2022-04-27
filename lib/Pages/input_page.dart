@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:bmical/Data/constant.dart';
 import 'package:bmical/Widgets/Reusedcard.dart';
+import 'package:bmical/Widgets/customfloatingbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Widgets/card_data.dart';
@@ -21,6 +21,8 @@ enum Gender {
 class _InputPageState extends State<InputPage> {
   //  late Gender selectedGender;
   int height = 100;
+  int weight = 0;
+  int age = 0;
   Color maleCardColor = kInActiveCardcolor;
   Color femaleCardColor = kInActiveCardcolor;
   void updatecolor(Gender selectedGender) {
@@ -90,43 +92,55 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            Expanded(
-              child: ReusedCard(
-                colour: KActiveCardcolor,
-                cardchild: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "HEIGHT",
-                      style: kLabelTextstyle,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: [
-                        Text(height.toString(), style: kNumberTextstyle),
-                        Text(
-                          "cm",
-                          style: kLabelTextstyle,
+            SingleChildScrollView(
+              child: Expanded(
+                child: ReusedCard(
+                  colour: KActiveCardcolor,
+                  cardchild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "HEIGHT",
+                        style: kLabelTextstyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(height.toString(), style: kNumberTextstyle),
+                          Text(
+                            "cm",
+                            style: kLabelTextstyle,
+                          ),
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          inactiveTrackColor: kSliderInactive,
+                          thumbColor: Color(0xffeb1555),
+                          activeTrackColor: Colors.white,
+                          overlayColor: Color(0x29eb1555),
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30),
                         ),
-                      ],
-                    ),
-                    Slider(
-                      value: height.toDouble(),
-                      onChanged: (double newValue) {
-                        setState(() {
-                          height = newValue.round();
-                        });
-                      },
-                      min: 100,
-                      max: 220,
-                      activeColor: kSlidercolor,
-                      inactiveColor: kSliderInactive,
-                    )
-                  ],
+                        child: Slider(
+                          value: height.toDouble(),
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          },
+                          min: 100,
+                          max: 220,
+                        ),
+                      )
+                    ],
+                  ),
+                  onPress: () {},
                 ),
-                onPress: () {},
               ),
             ),
             Expanded(
@@ -135,25 +149,107 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusedCard(
                     colour: KActiveCardcolor,
-                    cardchild: Column(children: []),
+                    cardchild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "WEIGHT",
+                            style: kLabelTextstyle,
+                          ),
+                          Text(
+                            weight.toString(),
+                            style: kNumberTextstyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Action_button(
+                                  onpress: () {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  },
+                                  icon: Icons.remove),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Action_button(
+                                  onpress: () {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  },
+                                  icon: Icons.add),
+                            ],
+                          )
+                        ]),
                     onPress: () {},
                   ),
                 ),
                 Expanded(
                   child: ReusedCard(
                     colour: KActiveCardcolor,
-                    cardchild: Column(children: []),
+                    cardchild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "AGE",
+                            style: kLabelTextstyle,
+                          ),
+                          Text(
+                            age.toString(),
+                            style: kNumberTextstyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Action_button(
+                                  onpress: () {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  },
+                                  icon: Icons.remove),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Action_button(
+                                  onpress: () {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  },
+                                  icon: Icons.add),
+                            ],
+                          )
+                        ]),
                     onPress: () {},
                   ),
                 ),
               ],
             )),
-            Container(
-              margin: EdgeInsets.all(20),
-              width: double.infinity,
-              height: kBottomcontainerheight,
-              decoration: BoxDecoration(
-                  color: kBottomcolor, borderRadius: BorderRadius.circular(10)),
+            FlatButton(
+              onPressed: () {
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (Context) => Result_page()));
+                Navigator.pushNamed(context, '/first');
+              },
+              child: Container(
+                child: Center(
+                    child: Text(
+                  "Calculate",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                  ),
+                )),
+                margin: EdgeInsets.all(20),
+                width: double.infinity,
+                height: kBottomcontainerheight,
+                decoration: BoxDecoration(
+                    color: kBottomcolor,
+                    borderRadius: BorderRadius.circular(10)),
+              ),
             ),
           ],
         ));
