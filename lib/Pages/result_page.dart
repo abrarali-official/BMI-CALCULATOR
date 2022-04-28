@@ -1,18 +1,19 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:bmical/Data/constant.dart';
 import 'package:bmical/Widgets/Reusedcard.dart';
 import 'package:bmical/Widgets/buttom_button.dart';
 import 'package:flutter/material.dart';
 
-class Result_page extends StatefulWidget {
-  Result_page({Key? key}) : super(key: key);
+class Result_Page extends StatelessWidget {
+  const Result_Page(
+      {Key? key,
+      required this.bmiResult,
+      required this.resultText,
+      required this.interpretation})
+      : super(key: key);
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
 
-  @override
-  State<Result_page> createState() => _Result_pageState();
-}
-
-class _Result_pageState extends State<Result_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,15 +45,15 @@ class _Result_pageState extends State<Result_page> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Normal',
+                        resultText.toUpperCase(),
                         style: kResulttextStyle,
                       ),
                       Text(
-                        '14.2',
+                        bmiResult,
                         style: kBMITextstyle,
                       ),
                       Text(
-                        'Your BMI result is quite low, you should eat more!',
+                        interpretation,
                         textAlign: TextAlign.center,
                         style: kbodyTextstyle,
                       )
@@ -74,3 +75,14 @@ class _Result_pageState extends State<Result_page> {
     );
   }
 }
+
+
+
+
+// ignore: unused_element
+
+  // final String bmiResult;
+  // final String resultText;
+  // final String interpretation;
+
+

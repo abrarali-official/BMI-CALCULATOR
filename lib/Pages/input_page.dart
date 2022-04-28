@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
+import 'package:bmical/Data/calculator_brain.dart';
 import 'package:bmical/Data/constant.dart';
+import 'package:bmical/Pages/result_page.dart';
 import 'package:bmical/Widgets/Reusedcard.dart';
 import 'package:bmical/Widgets/buttom_button.dart';
 import 'package:bmical/Widgets/customfloatingbutton.dart';
@@ -236,7 +238,15 @@ class _InputPageState extends State<InputPage> {
             Buttom_Button(
               buttontext: 'Calculate',
               onpress: () {
-                Navigator.pushNamed(context, '/first');
+                // ignore: unused_local_variable
+                CalculatorBrain calc = CalculatorBrain(height, weight);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Result_Page(
+                            bmiResult: calc.calculateBMI(),
+                            resultText: calc.getResult(),
+                            interpretation: calc.getinterpretation())));
               },
             ),
           ],
