@@ -19,9 +19,9 @@ class BMICalculator extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xff0a0d22),
           textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white))),
       debugShowCheckedModeBanner: false,
-      initialRoute: 'abrar',
+      initialRoute: '/',
       routes: {
-        'abrar': (context) => InputPage(),
+        '/': (context) => InputPage(),
         '/first': (context) => Result_page(),
       },
     );

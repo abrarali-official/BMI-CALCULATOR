@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 import 'package:bmical/Data/constant.dart';
 import 'package:bmical/Widgets/Reusedcard.dart';
+import 'package:bmical/Widgets/buttom_button.dart';
 import 'package:bmical/Widgets/customfloatingbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -92,55 +93,53 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            SingleChildScrollView(
-              child: Expanded(
-                child: ReusedCard(
-                  colour: KActiveCardcolor,
-                  cardchild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "HEIGHT",
-                        style: kLabelTextstyle,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
-                        children: [
-                          Text(height.toString(), style: kNumberTextstyle),
-                          Text(
-                            "cm",
-                            style: kLabelTextstyle,
-                          ),
-                        ],
-                      ),
-                      SliderTheme(
-                        data: SliderTheme.of(context).copyWith(
-                          inactiveTrackColor: kSliderInactive,
-                          thumbColor: Color(0xffeb1555),
-                          activeTrackColor: Colors.white,
-                          overlayColor: Color(0x29eb1555),
-                          thumbShape:
-                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                          overlayShape:
-                              RoundSliderOverlayShape(overlayRadius: 30),
+            Expanded(
+              child: ReusedCard(
+                colour: KActiveCardcolor,
+                cardchild: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "HEIGHT",
+                      style: kLabelTextstyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(height.toString(), style: kNumberTextstyle),
+                        Text(
+                          "cm",
+                          style: kLabelTextstyle,
                         ),
-                        child: Slider(
-                          value: height.toDouble(),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              height = newValue.round();
-                            });
-                          },
-                          min: 100,
-                          max: 220,
-                        ),
-                      )
-                    ],
-                  ),
-                  onPress: () {},
+                      ],
+                    ),
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: kSliderInactive,
+                        thumbColor: Color(0xffeb1555),
+                        activeTrackColor: Colors.white,
+                        overlayColor: Color(0x29eb1555),
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 30),
+                      ),
+                      child: Slider(
+                        value: height.toDouble(),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                        min: 100,
+                        max: 220,
+                      ),
+                    )
+                  ],
                 ),
+                onPress: () {},
               ),
             ),
             Expanded(
@@ -228,28 +227,17 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            FlatButton(
-              onPressed: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (Context) => Result_page()));
+
+            // onPressed: () {
+            //   // Navigator.push(context,
+            //   //     MaterialPageRoute(builder: (Context) => Result_page()));
+
+            // },
+            Buttom_Button(
+              buttontext: 'Calculate',
+              onpress: () {
                 Navigator.pushNamed(context, '/first');
               },
-              child: Container(
-                child: Center(
-                    child: Text(
-                  "Calculate",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                  ),
-                )),
-                margin: EdgeInsets.all(20),
-                width: double.infinity,
-                height: kBottomcontainerheight,
-                decoration: BoxDecoration(
-                    color: kBottomcolor,
-                    borderRadius: BorderRadius.circular(10)),
-              ),
             ),
           ],
         ));
